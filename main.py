@@ -1,6 +1,10 @@
+from time import sleep
+from urllib import response
 from webbrowser import Chrome
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import requests
+from bs4 import BeautifulSoup
 
 navegador = webdriver.Chrome()
 
@@ -11,6 +15,13 @@ navegador.get("https://www.madeiramadeira.com.br/")
 campo = navegador.find_element("xpath", '//*[@id="searchAutoComplete"]')
 
 #Digitar o que eu quero e dar enter.
-## Tentar pegaro imput do usuario para saber o produto que ele quer.
+## Tentar pegar o imput do usuario para saber o produto que ele quer.
 campo.send_keys('cama')
+sleep(1)
 campo.send_keys(Keys.ENTER)
+
+cards = navegador.find_elements('xpath', '//*[@id="control-box-content"]/div[4]/div/div/div/div[2]/div/div[1]/div[1]/div/article/a')
+
+for card in cards:
+    nameHolder = card.find_element('xpath', '//*[@id="control-box-content"]/div[4]/div/div/div/div[2]/div/div[1]/div[1]/div/article/a/div[4]/div/h2')
+    print(nameHolder)
