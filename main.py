@@ -22,6 +22,8 @@ campo.send_keys(Keys.ENTER)
 
 cards = navegador.find_elements('xpath', '//*[@id="control-box-content"]/div[4]/div/div/div/div[2]/div/div[1]/div[1]/div/article/a')
 
+#lACO PARA PEGAR OS DADOS DO PRODUTO
 for card in cards:
     nameHolder = card.find_element('xpath', '//*[@id="control-box-content"]/div[4]/div/div/div/div[2]/div/div[1]/div[1]/div/article/a/div[4]/div/h2')
-    print(nameHolder)
+    nome = nameHolder.get_attribute('innerHTML')
+    print(nome)
